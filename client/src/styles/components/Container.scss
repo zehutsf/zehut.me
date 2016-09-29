@@ -1,0 +1,18 @@
+.Container {
+  position: relative;
+  padding: 0px 20px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.Container--sm {
+  max-width: 500px;
+}
+
+.Container--md {
+  max-width: 750px;
+}
+
+.Container--lg {
+  max-width: 1000px;
+}

@@ -1,0 +1,21 @@
+@import "../vars";
+@import "../fonts";
+
+$padding: 4px;
+
+.BlockText-container {
+  display: inline;
+  background:  $highlight-color;
+  @include whitney-bold();
+  padding: $padding;
+  font-size: 32px;
+  line-height: 1.4;
+  color: #fff;
+  -webkit-box-decoration-break: clone;
+  -ms-box-decoration-break: clone;
+  -o-box-decoration-break: clone;
+  box-decoration-break: clone;
+  box-shadow: 
+      $padding 0 0 $highlight-color, 
+      -$padding 0 0 $highlight-color;
+}

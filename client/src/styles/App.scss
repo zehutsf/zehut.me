@@ -1,0 +1,7 @@
+@import "fonts";
+
+:global {
+  body {
+    @include whitney-black();
+  }
+}

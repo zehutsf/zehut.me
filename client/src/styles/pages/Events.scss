@@ -1,0 +1,14 @@
+@import "../vars";
+@import "../fonts";
+
+.Events-header {
+  padding: $navbar-height + 30px 0px 30px 0px;
+}
+
+.Events-headline {
+}
+
+.Events-content {
+  background: $highlight-color;
+  padding: 30px 0px;
+}

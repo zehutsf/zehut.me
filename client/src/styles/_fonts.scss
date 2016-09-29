@@ -1,0 +1,32 @@
+$whitney-font-family: "Whitney SSm A", "Whitney SSm B";
+$whitney-condensed-font-family: "Whitney Cond A", "Whitney Cond B";
+$archer-font-family: "Archer SSm A", "Archer SSm B";
+
+@mixin whitney-bold() {
+  font-family: $whitney-font-family;
+  font-style: normal;
+  font-weight: 700;
+} 
+
+@mixin whitney-black() {
+  font-family: $whitney-font-family;
+  font-style: normal;
+  font-weight: 800;
+}
+
+@mixin whitney-condensed-bold() {
+  font-family: $whitney-condensed-font-family;
+  font-style: normal;
+  font-weight: 700;
+} 
+
+@mixin whitney-condensed-black() {
+  font-family: $whitney-condensed-font-family;
+  font-style: normal;
+  font-weight: 800;
+}
+@mixin archer-medium() {
+  font-family: $archer-font-family;
+  font-style: normal;
+  font-weight: 600;
+}

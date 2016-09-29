@@ -1,0 +1,24 @@
+@import "../fonts";
+
+.Home-videoContainer {
+  position: absolute;
+  overflow: hidden;
+}
+
+.Home-videoOffset {
+  position: absolute;
+}
+
+.Home-content {
+  width: 100%;
+  max-width: 500px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.Home-logo {
+  @include whitney-condensed-black();
+  color: #fff;
+  letter-spacing: 0em;
+  font-size: 112px;
+}

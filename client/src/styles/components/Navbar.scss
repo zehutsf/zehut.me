@@ -1,0 +1,35 @@
+@import "../vars";
+@import "../fonts";
+
+.Navbar-bar {
+  height: $navbar-height;
+  background: #fff;
+  position: fixed;
+  z-index: 500;
+  width: 100%;
+}
+
+.Navbar-logo {
+  line-height: $navbar-height;
+  text-decoration: none;
+  color: #000;
+  @include whitney-condensed-black();
+  font-size: 34px;
+}
+
+.Navbar-navItem {
+  line-height: $navbar-height;
+  padding: 0px 20px;
+  @include whitney-bold();
+  font-size: 18px;
+  color: #d3d3d3;
+  display: inline-block;
+}
+
+.Navbar-navItem:hover {
+  color: #000;
+}
+
+.Navbar-nav {
+  float: right;
+}
