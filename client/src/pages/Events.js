@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Container from '../components/Container';
+import FacebookStatus from '../components/FacebookStatus';
+import FacebookLogin from '../components/FacebookLogin';
+
 import '../styles/pages/Events.scss';
 
 class Events extends Component {
@@ -35,11 +38,21 @@ class Events extends Component {
         </div>
         <div className="Events-content">
           <Container size="lg">
-            <ul>
-              {events.map(event => (
-                <li key={event.id}><a href={event.url}>{event.name}</a></li>
-              ))}
-            </ul>
+            <FacebookStatus>
+              {(status) => {
+                if (status.status === 'not_authorized') {
+                  return <FacebookLogin />;
+                }
+
+                return (
+                  <ul>
+                    {events.map(event => (
+                      <li key={event.id}><a href={event.url}>{event.name}</a></li>
+                    ))}
+                  </ul>
+                );
+              }}
+            </FacebookStatus>
           </Container>
         </div>
       </div>
