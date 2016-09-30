@@ -5,6 +5,13 @@ import { getEvents } from './api/eventbrite';
 const app = express();
 app.set('port', (process.env.API_PORT || 3001));
 
+app.get('/api/config', (req, rw) => {
+  rw.json({
+    FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
+    STRIPE_KEY: process.env.STRIPE_KEY
+  });
+});
+
 app.get('/api/events', async (req, rw) => {
   try {
     const events = await getEvents();

@@ -18,7 +18,12 @@ const loadSDK = () => {
   }(document, 'script', 'facebook-jssdk'));
 };
 
-export const init = ({ appId, version = 'v2.7', status = true }, callback = () => {}) => {
+export const init = ({ appId, version = 'v2.7', status = true }) => {
+  let callback;
+  const promise = new Promise(resolve => {
+    callback = () => resolve();
+  });
+
   window.fbAsyncInit = () => {
     FB.init({
       appId,
@@ -34,6 +39,7 @@ export const init = ({ appId, version = 'v2.7', status = true }, callback = () =
   };
 
   loadSDK();
+  return promise;
 };
 
 export const getLoginStatus = () => {
