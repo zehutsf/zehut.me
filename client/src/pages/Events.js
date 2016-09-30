@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import FacebookStatus from '../components/FacebookStatus';
 import FacebookLogin from '../components/FacebookLogin';
+import EventCard from '../components/EventCard';
 
 import '../styles/pages/Events.scss';
 
@@ -26,31 +27,36 @@ class Events extends Component {
     }
   }
 
-  render() {
-    const { events } = this.state;
+  renderCards() {
+      const { events } = this.state;
+      
+      return (
+        <div className="Events-cards">
+          {events.map(event => (
+            <div className="Events-cardContainer">
+              <EventCard key={event.id} event={event} />
+            </div>
+          ))}
+        </div>
+      );
+  }
 
+  render() {
     return (
       <div>
         <div className="Events-header">
-          <Container size="lg">
-            <h1>Events</h1>
+          <Container size="md">
+            <h1 className="Events-headline">Event Calendar</h1>
           </Container>
         </div>
         <div className="Events-content">
-          <Container size="lg">
+          <Container size="md">
             <FacebookStatus>
               {(status) => {
                 if (status.status === 'not_authorized') {
                   return <FacebookLogin />;
                 }
-
-                return (
-                  <ul>
-                    {events.map(event => (
-                      <li key={event.id}><a href={event.url}>{event.name}</a></li>
-                    ))}
-                  </ul>
-                );
+                return this.renderCards();
               }}
             </FacebookStatus>
           </Container>

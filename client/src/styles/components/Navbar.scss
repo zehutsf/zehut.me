@@ -7,8 +7,12 @@
   position: fixed;
   z-index: 500;
   width: 100%;
+  border-bottom: thin solid #E7E7E7;
 }
 
+.Navbar-logoContainer {
+  
+}
 .Navbar-logo {
   line-height: $navbar-height;
   text-decoration: none;

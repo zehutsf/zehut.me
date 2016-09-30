@@ -6,9 +6,23 @@
 }
 
 .Events-headline {
+  @include whitney-black();
+  font-size: 72px;
+  margin-top: 80px;
+  color: #000;
 }
 
 .Events-content {
   background: $highlight-color;
   padding: 30px 0px;
+}
+
+.Events-cards {
+  width: 100%;
+}
+
+.Events-cardContainer {
+  width: 48%;
+  margin: 1% 1%; 
+  display: inline-block;
 }
