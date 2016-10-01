@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import FacebookStatus from '../components/FacebookStatus';
 import FacebookLogin from '../components/FacebookLogin';
 import EventCard from '../components/EventCard';
+import PageHeader from '../components/PageHeader';
 
 import '../styles/pages/Events.scss';
 
@@ -44,11 +45,7 @@ class Events extends Component {
   render() {
     return (
       <div>
-        <div className="Events-header">
-          <Container size="md">
-            <h1 className="Events-headline">Event Calendar</h1>
-          </Container>
-        </div>
+        <PageHeader headline="Events Calendar" />
         <div className="Events-content">
           <Container size="md">
             <FacebookStatus>

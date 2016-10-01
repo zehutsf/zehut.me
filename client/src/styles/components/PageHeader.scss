@@ -1,0 +1,22 @@
+@import "../fonts";
+@import "../vars";
+
+.PageHeader {
+  padding: $navbar-height + 30px 0px 30px 0px;
+}
+
+.PageHeader-headline {
+  @include whitney-black();
+  font-size: 72px;
+  margin-top: 50px;
+  color: #000;
+}
+
+.PageHeader-text {
+  /* TODO: It's own component */
+  @include archer-medium();
+  font-size: 24px;
+  margin-top: 24px;
+  color: #5d5d5d;
+  line-height: 1.3;
+}

@@ -15,12 +15,14 @@ app.get('/api/config', (req, rw) => {
 app.get('/api/events', async (req, rw) => {
   try {
     const events = await getEvents();
-    const dup = [...events, ...events, ...events];
-
-    rw.json({ events: dup });
+    rw.json({ events });
   } catch (err) {
     rw.json('Error');
   }
+});
+
+app.post('/api/contribute', async (req, rw) => {
+  
 });
 
 app.use(express.static(__dirname + '/client/build'));
