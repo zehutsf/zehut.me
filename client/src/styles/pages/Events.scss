@@ -1,4 +1,5 @@
 @import "../vars";
+@import "../queries";
 
 .Events-content {
   background: $highlight-color;
@@ -13,4 +14,9 @@
   width: 48%;
   margin: 1% 1%; 
   display: inline-block;
+
+  @media #{$query-mobile} {
+    width: 100%;
+    margin: 1% 0;
+  }
 }

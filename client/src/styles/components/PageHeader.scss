@@ -1,5 +1,6 @@
 @import "../fonts";
 @import "../vars";
+@import "../queries";
 
 .PageHeader {
   padding: $navbar-height + 30px 0px 30px 0px;
@@ -10,6 +11,10 @@
   font-size: 72px;
   margin-top: 50px;
   color: #000;
+
+  @media #{$query-mobile} {
+    font-size: 48px;
+  }
 }
 
 .PageHeader-text {

@@ -18,9 +18,12 @@ class Contribute extends Component {
           Awesome! How much would you like to give?
         </div>
         <div className="Contribute-options">
-          <div className="Contribute-amountInput">
-            <input className="Contribute-amountInput-input" type="text"  placeholder="Amount" />
+          <div className="Contribute-amount">
+            <div className="Contribute-amountInput">
+              <input className="Contribute-amountInput-input" type="text"  placeholder="Amount" />
+            </div>
           </div>
+          <button className="Contribute-submit">Submit</button>
         </div>
       </div>
     );
