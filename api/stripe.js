@@ -9,7 +9,6 @@ export const createCharge = ({ amount, description, source }) => {
       source,
       description,
       currency: "usd",
-      currency: "usd",
       source: "tok_189fTS2eZvKYlo2CcYJIOGkr", // obtained with Stripe.js
       description: "Charge for addison.wilson@example.com"
     }, (error, charge) => {

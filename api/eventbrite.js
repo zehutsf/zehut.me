@@ -20,7 +20,7 @@ const createEventInfo = (eventJSON) => ({
 });
 
 export const getEvents = async () => {
-    const result = await fetch(EVENTBRITE_EVENTS_URL, { headers: EVENTBRITE_HEADERS });
-    const data = await result.json();
-    return data.events.map(createEventInfo);
+  const result = await fetch(EVENTBRITE_EVENTS_URL, { headers: EVENTBRITE_HEADERS });
+  const data = await result.json();
+  return data.events.map(createEventInfo);
 };

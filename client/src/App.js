@@ -14,9 +14,9 @@ class App extends Component {
         <div className="App-container">
           <Navbar/>
           <div className="App-content">
-              <Match exactly pattern="/" component={Home} />
-              <Match pattern="/events" component={Events} />
-              <Match pattern="/contribute" component={Contribute} />
+            <Match exactly pattern="/" component={Home} />
+            <Match pattern="/events" component={Events} />
+            <Match pattern="/contribute" component={Contribute} />
           </div>
         </div>
       </BrowserRouter>
