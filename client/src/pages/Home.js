@@ -32,7 +32,7 @@ class Home extends Component {
       <div className="Home-videoContainer" style={videoContainerStyle}>
         <div className="Home-videoOffset" style={videoOffsetStyle}>
           <video 
-            muted preload loop autoPlay 
+            muted loop autoPlay playsInline
             width={videoSize.width} 
             height={videoSize.height}>
             {VIDEO_SOURCES.map(({ type, src }) => <source key={type} type={type} src={src} />)}
