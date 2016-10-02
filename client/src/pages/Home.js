@@ -27,6 +27,7 @@ class Home extends Component {
       height: videoSize.height,
     };
 
+    // https://webkit.org/blog/6784/new-video-policies-for-ios/ 
     return (
       <div className="Home-videoContainer" style={videoContainerStyle}>
         <div className="Home-videoOffset" style={videoOffsetStyle}>
@@ -39,6 +40,10 @@ class Home extends Component {
         </div>
       </div>
     )
+  }
+
+  componentDidMount() {
+
   }
 
   renderContent() {
