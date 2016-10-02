@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { Link } from 'react-router';
 import Container from './Container';
 import '../styles/components/Navbar.scss';
@@ -10,7 +11,7 @@ const NAV_ITEMS = [
 ];
 
 const renderNavItem = ({ title, to }) => (
-  <Link to={to} key={to} className="Navbar-navItem">{title}</Link>
+  <Link to={to} key={to} activeOnlyWhenExact className="Navbar-navItem">{title}</Link>
 );
 
 const renderNav = () => (
@@ -19,13 +20,16 @@ const renderNav = () => (
   </div>
 );
 
-const Navbar = () => (
-    <div className="Navbar-bar">
-      <Container size="lg">
-        <Link to="/" className="Navbar-logo">Zehut!</Link>
-        {renderNav()}
-      </Container>
-    </div>
+const Navbar = ({ home }) => (
+  <div className={cx({
+    'Navbar-bar': true,
+    'Navbar-bar--home': home
+  })}>
+    <Container size="lg">
+      <Link to="/" className="Navbar-logo">Zehut!</Link>
+      {renderNav()}
+    </Container>
+  </div>
 );
 
 export default Navbar;

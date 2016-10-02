@@ -11,14 +11,17 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App-container">
-          <Navbar/>
-          <div className="App-content">
-            <Match exactly pattern="/" component={Home} />
-            <Match pattern="/events" component={Events} />
-            <Match pattern="/contribute" component={Contribute} />
+        {({ location }) => (
+          <div className="App-container">
+            {/* hack while activeClassName is broken */}
+            <Navbar home={location.pathname === '/'}/>
+            <div className="App-content">
+              <Match exactly pattern="/" component={Home} />
+              <Match pattern="/events" component={Events} />
+              <Match pattern="/contribute" component={Contribute} />
+            </div>
           </div>
-        </div>
+        )}
       </BrowserRouter>
     )
   }
