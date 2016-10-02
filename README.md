@@ -12,4 +12,4 @@ cd client && npm install
 
 ## Notes
 
-Currently the build artifacts are being tracked, until I have the time to customize a heroku buildpack to run the nested `client` build. This could be solved by flattening the client/root (server) directories, but I like the separation of concerns (and packages) here.
+The [`build`](https://github.com/zehutsf/zehut.me/tree/build) branch is what is used to deploy to Heroku. It contains the static build artifacts. The need to commit build files at all can be fixed by customizing a heroku buildpack, or flattening the client/root (server) directories.
