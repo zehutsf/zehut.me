@@ -1,5 +1,6 @@
 @import "../vars";
 @import "../fonts";
+@import "../queries";
 
 .Navbar-bar {
   height: $navbar-height;
@@ -10,9 +11,6 @@
   border-bottom: thin solid #E7E7E7;
 }
 
-.Navbar-logoContainer {
-  
-}
 .Navbar-logo {
   line-height: $navbar-height;
   text-decoration: none;
@@ -23,11 +21,16 @@
 
 .Navbar-navItem {
   line-height: $navbar-height;
-  padding: 0px 20px;
+  padding: 0px 10px;
   @include whitney-bold();
   font-size: 18px;
   color: #d3d3d3;
   display: inline-block;
+
+  @media #{$query-mobile} {
+    font-size: 14px;
+    padding: 0px 6px;
+  }
 }
 
 .Navbar-navItem:hover {

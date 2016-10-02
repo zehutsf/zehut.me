@@ -4,6 +4,8 @@ import cx from 'classnames';
 import animatedScrollTo from 'animated-scrollto';
 import PageHeader from '../components/PageHeader';
 import Container from '../components/Container';
+import VCContainer from '../components/VCContainer';
+import LoadingAnimation from '../components/LoadingAnimation';
 import { open as openCheckout } from '../utils/stripe';
 import postJSON from '../utils/postJSON';
 import '../styles/pages/Contribute.scss';
@@ -29,7 +31,9 @@ class Contribute extends Component {
   state = { 
     selectedOption: null, 
     amount: '', 
-    submitEnabled: false
+    submitEnabled: false,
+    isSubmitting: false,
+    complete: false
   };
 
   onAmountChange = (event) => {
@@ -59,8 +63,11 @@ class Contribute extends Component {
 
     // Closed
     if (!stripeResult) {
+      this.setState({ isSubmitting: false });
       return;
     }
+
+    this.setState({ isSubmitting: true });
 
     try {
       const result = await postJSON(
@@ -70,11 +77,10 @@ class Contribute extends Component {
           token: { id: stripeResult.id, email: stripeResult.email }
       });
 
-      if (result.success) {
-        // TODO:
-      }
+      this.setState({ complete: !!result.success, isSubmitting: false });
+      
     } catch (err) {
-      // TODO:
+      this.setState({ isSubmitting: false });
     }
   }
 
@@ -85,41 +91,50 @@ class Contribute extends Component {
       const submitTop = this._submitRef.getBoundingClientRect().top;
       const targetScroll = Math.min(submitTop, maxScrollTop);
 
-      animatedScrollTo(document.body, targetScroll, 1000, () => {
+      animatedScrollTo(document.body, targetScroll, 750, () => {
         findDOMNode(this._inputRef).focus();
       });
     });
   }
 
+  renderSubmit() {
+    const { submitEnabled, isSubmitting } = this.state;
+    const submitInner = isSubmitting ? (
+      <LoadingAnimation light />
+    ) : 'Submit';
+
+    return (
+      <button 
+        className={cx(
+          'Contribute-submit',
+          !submitEnabled ? 'Contribute-submit--disabled' : ''
+        )}
+        ref={(el) => this._submitRef = el}
+        onClick={this.onSubmit}>
+        {submitInner}
+      </button>
+    );
+  }
+
   renderAmount() {
-    const { amount, submitEnabled } = this.state;
+    const { amount } = this.state;
     return (
       <div className="Contribute-section">
         <div className="Contribute-message">
           Awesome! How much would you like to give?
         </div>
-        <div className="Contribute-options">
-          <div className="Contribute-amount">
-            <div className="Contribute-amountInput">
-              <input 
-                ref={(el) => this._inputRef = el}
-                value={amount}
-                onChange={this.onAmountChange}
-                className="Contribute-amountInput-input" 
-                type="text" 
-                placeholder="Amount" />
-            </div>
+        <div className="Contribute-amount">
+          <div className="Contribute-amountInput">
+            <input 
+              ref={(el) => this._inputRef = el}
+              value={amount}
+              onChange={this.onAmountChange}
+              className="Contribute-amountInput-input" 
+              type="text" 
+              placeholder="Amount" />
           </div>
-          <button 
-            className={cx(
-              'Contribute-submit',
-              !submitEnabled ? 'Contribute-submit--disabled' : ''
-            )}
-            ref={(el) => this._submitRef = el}
-            onClick={this.onSubmit}>
-            Submit
-          </button>
         </div>
+        {this.renderSubmit()}
       </div>
     );
   }
@@ -138,14 +153,36 @@ class Contribute extends Component {
     );
   }
 
+  renderComplete() {
+    return (
+      <div className="Contribute-complete">
+        <VCContainer>
+          <Container size="md">
+            <h2 className="Contribute-complete-headline">Amazing.</h2>
+            <p className="Contribute-complete-text">
+              Thank you so much for your contribution. If you have any questions, please get in touch at&nbsp;
+              <a href="mailto:peretz@zehut.me">peretz@zehut.me</a>.
+            </p>
+          </Container>
+        </VCContainer>
+      </div>
+    )
+  }
+
   render() {
+    const { isSubmitting, complete } = this.state;
+
+    if (complete) {
+      return this.renderComplete();
+    }
+
     return (
       <div>
         <PageHeader 
           headline="Contribute" 
           text="Zehut is funded entirely by its community. Thanks for contributing to SF’s jewish future."
         />
-        <Container size="md">
+        <Container size="md" className={isSubmitting ? 'Contribute--isSubmitting' : ''}>
           <div className="Contribute-section">
             <div className="Contribute-message">
               What kind of contribution would you like to make?
@@ -157,6 +194,7 @@ class Contribute extends Component {
           </div>
           {this.state.selectedOption && this.renderAmount()}
         </Container>
+        <div className="Contribute-overlay"/>
       </div>
     );
   }

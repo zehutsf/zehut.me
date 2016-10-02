@@ -3,7 +3,7 @@
 @import "../queries";
 
 .Contribute-section {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .Contribute-message {
@@ -122,4 +122,54 @@
   pointer-events: none;
   cursor: default;
   background: #eeeeee
+}
+
+.Contribute-submit .sk-three-bounce {
+  display: inline-block;
+}
+
+.Contribute--isSubmitting .Contribute-options {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.Contribute--isSubmitting .Contribute-amount {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.Contribute-complete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $highlight-color;
+  color: #fff !important;
+}
+
+
+.Contribute-complete-headline {
+  @include whitney-black();
+  font-size: 72px;
+  margin-top: 50px;
+  color: #fff;
+
+  @media #{$query-mobile} {
+    font-size: 48px;
+  }
+}
+
+.Contribute-complete-text {
+  /* TODO: It's own component */
+  @include archer-medium();
+  font-size: 24px;
+  margin-top: 24px;
+  color: #fff;
+  line-height: 1.3;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+  }
 }

@@ -1,5 +1,6 @@
 @import "../vars";
 @import "../fonts";
+@import "../queries";
 
 $padding: 4px;
 
@@ -18,4 +19,8 @@ $padding: 4px;
   box-shadow: 
       $padding 0 0 $highlight-color, 
       -$padding 0 0 $highlight-color;
+
+  @media #{$query-mobile} {
+    font-size: 28px;
+  }
 }
