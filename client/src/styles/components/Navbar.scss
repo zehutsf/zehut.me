@@ -19,18 +19,48 @@
   font-size: 34px;
 }
 
+$navbar-item-height: 40px;
+$navbar-item-height-mobile: 35px;
+
 .Navbar-navItem {
-  line-height: $navbar-height;
-  padding: 0px 10px;
-  @include whitney-bold();
-  font-size: 18px;
-  color: #d3d3d3;
+  height: $navbar-height;
+  padding: ($navbar-height - $navbar-item-height) / 2 10px;
   display: inline-block;
 
   @media #{$query-mobile} {
-    font-size: 14px;
-    padding: 0px 6px;
+    padding: ($navbar-height - $navbar-item-height-mobile) / 2 2px;
   }
+
+  &.Navbar-navItem--highlight {
+    padding-left: 15px;
+  }
+}
+
+.Navbar-navItem-inner {
+  @include whitney-bold();
+  font-size: 18px;
+  color: #d3d3d3;
+  padding: ($navbar-item-height - 18px) / 2;
+  transition: all 0.2s ease-in-out;
+
+  @media #{$query-mobile} {
+    font-size: 14px;
+    padding: ($navbar-item-height-mobile - 14px) / 2;
+  }
+
+  .Navbar-navItem:hover & {
+    color: $highlight-color;
+  }
+}
+
+.Navbar-navItem--highlight .Navbar-navItem-inner {
+  background: $highlight-color;
+  color: #fff;
+}
+
+.Navbar-navItem--highlight:hover .Navbar-navItem-inner {
+  color: #fff;
+  background: darken($highlight-color, 15%);
 }
 
 .Navbar-navItem:hover {

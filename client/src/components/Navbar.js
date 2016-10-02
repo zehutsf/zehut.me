@@ -5,13 +5,23 @@ import Container from './Container';
 import '../styles/components/Navbar.scss';
 
 const NAV_ITEMS = [
-  { title: 'Events', to: '/events' },
-  { title: 'About', to: '/about' },
-  { title: 'Contribute', to: '/contribute' }
+  // { title: 'Events', to: '/events' },
+  // { title: 'About', to: '/about' },
+  { title: 'Contribute', to: '/contribute', highlight: true }
 ];
 
-const renderNavItem = ({ title, to }) => (
-  <Link to={to} key={to} activeOnlyWhenExact className="Navbar-navItem">{title}</Link>
+const renderNavItem = ({ title, to, highlight }) => (
+  <Link 
+    to={to} 
+    key={to}
+    className={cx(
+      'Navbar-navItem',
+      highlight ? 'Navbar-navItem--highlight' : ''
+    )}>
+    <div className='Navbar-navItem-inner'>
+      {title}
+    </div>
+  </Link>
 );
 
 const renderNav = () => (
