@@ -62,7 +62,7 @@ app.post('/api/contribute', async (req, rw) => {
 app.use(express.static(__dirname + '/client/build'));
 
 app.get("*", (req, rw) => {
-  rw.html(__dirname + 'client/build/indexh.tml');
+  rw.sendFile(__dirname + '/client/build/index.html');
 });
 
 app.listen(app.get('port'), () => {
