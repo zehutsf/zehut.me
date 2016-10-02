@@ -63,6 +63,10 @@
   position: relative;
   border: thin solid $highlight-color;
   display: inline-block;
+
+  @media #{$query-mobile} {
+    width: 100%;
+  }
 }
 
 .Contribute-amountInput-input {
