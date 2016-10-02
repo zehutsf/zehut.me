@@ -2,16 +2,69 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import PageHeader from '../components/PageHeader';
 import Container from '../components/Container';
-// import { open as openCheckout } from '../utils/stripe';
+import { open as openCheckout } from '../utils/stripe';
+import postJSON from '../utils/postJSON';
 import '../styles/pages/Contribute.scss';
 
-const OPTION_TYPE_MONTHLY = 1;
-const OPTION_TYPE_ONE_TIME = 2;
+const OPTION_TYPE_MONTHLY = 'monthly';
+const OPTION_TYPE_ONE_TIME = 'one-time';
+const DESCRIPTIONS = {
+  [OPTION_TYPE_MONTHLY]: 'Monthly contribution',
+  [OPTION_TYPE_ONE_TIME]: 'One-time contribution'
+};
+
+// Given text input value, return value in cents (or null if invalid)
+const sanitizeAmount = (amount) => {
+  let sanitizedAmount = parseFloat(amount);
+  if (isNaN(sanitizedAmount)) {
+    return null;
+  }
+
+  return sanitizedAmount * 100;
+};
 
 class Contribute extends Component {
-  state = { selectedOption: null };
+  state = { selectedOption: null, amount: '' };
+
+  onSubmit = async (event) => {
+    event.preventDefault();
+
+    const { amount, selectedOption } = this.state;
+    const description = DESCRIPTIONS[selectedOption];
+    const sanitizedAmount = sanitizeAmount(amount);
+    if (!sanitizedAmount) {
+      return;
+    }    
+
+    const stripeResult = await openCheckout({
+      amount: sanitizedAmount,
+      name: 'Zehut!',
+      description
+    });
+
+    // Closed
+    if (!stripeResult) {
+      return;
+    }
+
+    try {
+      const result = await postJSON(
+        '/api/contribute', {
+          amount: sanitizedAmount,
+          type: selectedOption,
+          token: { id: stripeResult.id, email: stripeResult.email }
+      });
+
+      if (result.success) {
+        // TODO:
+      }
+    } catch (err) {
+      // TODO:
+    }
+  }
 
   renderAmount() {
+    const { amount } = this.state;
     return (
       <div className="Contribute-section">
         <div className="Contribute-message">
@@ -20,10 +73,15 @@ class Contribute extends Component {
         <div className="Contribute-options">
           <div className="Contribute-amount">
             <div className="Contribute-amountInput">
-              <input className="Contribute-amountInput-input" type="text"  placeholder="Amount" />
+              <input 
+                value={amount}
+                onChange={(event) => this.setState({ amount: event.target.value })}
+                className="Contribute-amountInput-input" 
+                type="text" 
+                placeholder="Amount" />
             </div>
           </div>
-          <button className="Contribute-submit">Submit</button>
+          <button className="Contribute-submit" onClick={this.onSubmit}>Submit</button>
         </div>
       </div>
     );
