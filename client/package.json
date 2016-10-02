@@ -16,9 +16,9 @@
     "spinkit": "^1.2.5"
   },
   "scripts": {
-    "start": "react-scripts start -p 3000",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "./node_modules/.bin/react-scripts start -p 3000",
+    "build": "./node_modules/.bin/react-scripts build",
+    "test": "./node_modules/.bin/react-scripts test --env=jsdom",
+    "eject": "./node_modules/.bin/react-scripts eject"
   }
 }
