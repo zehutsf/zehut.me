@@ -1,5 +1,5 @@
-const postJSON = (url, data) => {
-  return fetch(url, {
+const postJSON = async (url, data) => {
+  const result = await fetch(url, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -7,6 +7,8 @@ const postJSON = (url, data) => {
       },
       body: JSON.stringify(data)
     });
+
+  return await result.json();
 };
 
 export default postJSON;

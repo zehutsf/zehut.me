@@ -1,0 +1,10 @@
+@import "../vars";
+
+$spinkit-spinner-margin: 0;
+$spinkit-spinner-color: $highlight-color;
+
+@import "../../../node_modules/spinkit/scss/spinners/7-three-bounce.scss";
+
+.sk-three-bounce--light .sk-child {
+  background-color: #fff;  
+}
