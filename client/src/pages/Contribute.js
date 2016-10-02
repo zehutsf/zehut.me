@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
+import animatedScrollTo from 'animated-scrollto';
 import PageHeader from '../components/PageHeader';
 import Container from '../components/Container';
 import { open as openCheckout } from '../utils/stripe';
@@ -24,13 +26,26 @@ const sanitizeAmount = (amount) => {
 };
 
 class Contribute extends Component {
-  state = { selectedOption: null, amount: '' };
+  state = { 
+    selectedOption: null, 
+    amount: '', 
+    submitEnabled: false
+  };
+
+  onAmountChange = (event) => {
+    const amount = event.target.value;
+    const submitEnabled = !!sanitizeAmount(amount);
+    this.setState({ amount, submitEnabled });
+  }
 
   onSubmit = async (event) => {
     event.preventDefault();
+    const { amount, selectedOption, submitEnabled } = this.state;
 
-    const { amount, selectedOption } = this.state;
-    const description = DESCRIPTIONS[selectedOption];
+    if (!submitEnabled) {
+      return;
+    }
+
     const sanitizedAmount = sanitizeAmount(amount);
     if (!sanitizedAmount) {
       return;
@@ -39,7 +54,7 @@ class Contribute extends Component {
     const stripeResult = await openCheckout({
       amount: sanitizedAmount,
       name: 'Zehut!',
-      description
+      description: DESCRIPTIONS[selectedOption]
     });
 
     // Closed
@@ -63,8 +78,21 @@ class Contribute extends Component {
     }
   }
 
+  onSelectOption = (selectedOption) => {
+    this.setState({ selectedOption }, () => {
+      // This clamping should really be built in to the scroll library!
+      const maxScrollTop = document.body.scrollHeight - window.innerHeight;
+      const submitTop = this._submitRef.getBoundingClientRect().top;
+      const targetScroll = Math.min(submitTop, maxScrollTop);
+
+      animatedScrollTo(document.body, targetScroll, 1000, () => {
+        findDOMNode(this._inputRef).focus();
+      });
+    });
+  }
+
   renderAmount() {
-    const { amount } = this.state;
+    const { amount, submitEnabled } = this.state;
     return (
       <div className="Contribute-section">
         <div className="Contribute-message">
@@ -74,14 +102,23 @@ class Contribute extends Component {
           <div className="Contribute-amount">
             <div className="Contribute-amountInput">
               <input 
+                ref={(el) => this._inputRef = el}
                 value={amount}
-                onChange={(event) => this.setState({ amount: event.target.value })}
+                onChange={this.onAmountChange}
                 className="Contribute-amountInput-input" 
                 type="text" 
                 placeholder="Amount" />
             </div>
           </div>
-          <button className="Contribute-submit" onClick={this.onSubmit}>Submit</button>
+          <button 
+            className={cx(
+              'Contribute-submit',
+              !submitEnabled ? 'Contribute-submit--disabled' : ''
+            )}
+            ref={(el) => this._submitRef = el}
+            onClick={this.onSubmit}>
+            Submit
+          </button>
         </div>
       </div>
     );
@@ -94,7 +131,7 @@ class Contribute extends Component {
             'Contribute-optionItem', 
             type === this.state.selectedOption ? 'Contribute-optionItem--selected' : null
           )}
-          onClick={() => this.setState({ selectedOption: type })}
+          onClick={() => this.onSelectOption(type)}
           >
           <div className="Contribute-optionItem-inner">{text}</div>
       </button>

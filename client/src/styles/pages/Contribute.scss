@@ -110,7 +110,8 @@
   padding: 20px;
   @include whitney-black();
   text-transform: uppercase;
-
+  cursor: pointer;
+  
   @media #{$query-mobile} {
     display: block;
     width: 100%;
@@ -118,5 +119,7 @@
 }
 
 .Contribute-submit--disabled {
-  color: #d3d3d3;
+  pointer-events: none;
+  cursor: default;
+  background: #eeeeee
 }
