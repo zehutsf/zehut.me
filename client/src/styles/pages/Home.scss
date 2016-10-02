@@ -1,9 +1,11 @@
+@import "../vars";
 @import "../fonts";
 @import "../queries";
 
 .Home-videoContainer {
   position: absolute;
   overflow: hidden;
+  background: $highlight-color;
 }
 
 .Home-videoOffset {
