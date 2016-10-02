@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
-  "devDependencies": {
-    "custom-react-scripts": "0.0.13"
-  },
   "dependencies": {
     "animated-scrollto": "^1.1.0",
     "classnames": "^2.2.5",
@@ -13,11 +10,12 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^4.0.0-alpha.3",
-    "spinkit": "^1.2.5"
+    "spinkit": "^1.2.5",
+    "custom-react-scripts": "0.0.13"
   },
   "scripts": {
-    "start": "./node_modules/.bin/react-scripts start -p 3000",
-    "build": "./node_modules/.bin/react-scripts build",
+    "start": "REACT_APP_SASS=true ./node_modules/.bin/react-scripts start -p 3000",
+    "build": "REACT_APP_SASS=true ./node_modules/.bin/react-scripts build",
     "test": "./node_modules/.bin/react-scripts test --env=jsdom",
     "eject": "./node_modules/.bin/react-scripts eject"
   }
