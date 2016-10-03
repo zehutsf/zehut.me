@@ -51,7 +51,7 @@ class Home extends Component {
       <VCContainer>
         <div className="Home-content">
           <div className="Home-logo">Zehut!</div>
-          <BlockText>The Jewish engine in San Francisco</BlockText>
+          <BlockText>A uniquely Jewish experience in San Francisco</BlockText>
         </div>
       </VCContainer>
     );
