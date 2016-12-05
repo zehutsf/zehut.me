@@ -3,9 +3,9 @@ import fetch from 'node-fetch';
 import bodyParser from 'body-parser';
 import { query } from './api/db';
 import { getEvents } from './api/eventbrite';
-import { 
-  createMonthlyContribution, 
-  createOneTimeContribution 
+import {
+  createMonthlyContribution,
+  createOneTimeContribution
 } from './api/contribution';
 
 const app = express();
@@ -31,21 +31,21 @@ app.get('/api/events', async (req, rw) => {
 
 app.post('/api/contribute', async (req, rw) => {
   const { token, amount, type } = req.body;
-  
+
   if (!token) {
     rw.json({error: 'No token provided'});
   }
 
   const { id, email } = token;
   const contributionMethod = type === 'monthly' ? createMonthlyContribution : createOneTimeContribution;
-  
+
   let contributionData;
   try {
     contributionData = await contributionMethod(id, email, amount);
   } catch (error) {
     return rw.json({ error: error.toString() });
   }
-  
+
   let dbResult;
   try {
     contributionData.createdAt = (new Date()).getTime() / 1000;
