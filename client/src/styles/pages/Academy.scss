@@ -1,0 +1,131 @@
+@import "../fonts";
+@import "../vars";
+@import "../queries";
+
+.Academy-content {
+  background: #FFF;
+  padding: 30px 0px;
+  font-weight: normal;
+  h1 {
+    font-size: 40px;
+    padding: 20px;
+  }
+  p {
+    font-weight: normal;
+    font-size: 14px;
+  }
+}
+.Academy-buttons{
+  width: 100%;
+  a.youtube { background-color: #e91d00; }
+  a.bumpers { background-color: #0075E9; }
+  a.schedule { background-color: #5BB500; }
+  a.askrabbi { background-color: #E3AE00;}
+
+  a {
+    display: inline-block;
+    float: left;
+    background-color: #e91d00;
+    width: 200px;
+    height: 200px;
+    margin: 25px;
+    padding-top: 25px;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+
+    -o-transition: background-color 0.5s linear;
+    -moz-transition: background-color 0.5s linear;
+    -khtml-transition: background-color 0.5s linear;
+    -webkit-transition: background-color 0.5s linear;
+    -ms-transition: background-color 0.5s linear;
+    transition: background-color 0.5s linear;
+
+    &:visited {
+      color: #fff;
+    }
+    &:hover {
+      background-color: #000;
+    }
+
+    i {
+      display: block;
+      font-size: 100px;
+      padding-bottom: 5px;
+    }
+  }
+
+  .Youtube-button {
+    display: block;
+    float: right;
+    width: 250px;
+    height: 60px;
+    font-size: 18px;
+    color: #FFF;
+    background-color: #e91d00;
+    margin: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: all 0.2s ease-in-out;
+    vertical-align: middle;
+    img {
+      float: right;
+    }
+    span {
+      float: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 20px;
+      height: 60px;
+    }
+
+    @media #{$query-mobile} {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .Youtube-button:hover & {
+      color: $highlight-color;
+    }
+  }
+
+  .Podcast-button {
+    display: block;
+    float: right;
+    width: 250px;
+    height: 60px;
+    font-size: 18px;
+    color: #FFF;
+    background-color: #333;
+    margin: 20px;
+    padding-right: 46px;
+    transition: all 0.2s ease-in-out;
+    img {
+      float: right;
+      padding: 10px;
+    }
+    span {
+      float: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 20px;
+      height: 60px;
+    }
+
+    @media #{$query-mobile} {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .Podcast-button:hover & {
+      color: $highlight-color;
+    }
+  }
+}
+
+.svg{
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    stroke: #1F1F1F;
+}
