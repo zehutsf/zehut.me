@@ -9,8 +9,8 @@ const InfoCardGrid = ({ children, cols=2 }) => {
     <div className="InfoCardGrid-row">
       {row.map(item => (
         <div className="InfoCardGrid-cell">
-            {item}
-          </div>
+          {item}
+        </div>
       ))}
     </div>
   ));

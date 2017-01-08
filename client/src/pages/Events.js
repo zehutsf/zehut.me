@@ -3,9 +3,9 @@ import Container from '../components/Container';
 import FacebookStatus from '../components/FacebookStatus';
 import FacebookLogin from '../components/FacebookLogin';
 import EventCard from '../components/EventCard';
-import PageHeader from '../components/PageHeader';
+import InfoCardGrid from '../components/InfoCardGrid';
 
-import '../styles/pages/Events.scss';
+import PageHeader from '../components/PageHeader';
 
 class Events extends Component {
   constructor() {
@@ -29,17 +29,15 @@ class Events extends Component {
   }
 
   renderCards() {
-      const { events } = this.state;
-      
-      return (
-        <div className="Events-cards">
-          {events.map(event => (
-            <div className="Events-cardContainer">
-              <EventCard key={event.id} event={event} />
-            </div>
-          ))}
-        </div>
-      );
+    const { events } = this.state;
+    
+    return (
+      <InfoCardGrid>
+        {events.map(event => (
+          <EventCard key={event.id} event={event} />
+        ))}
+      </InfoCardGrid>
+    );
   }
 
   render() {

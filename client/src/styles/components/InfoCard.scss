@@ -35,6 +35,7 @@
 .InfoCard-link {
   display: block;
   margin-top: 24px;
+  font-size: 18px;
   color: $highlight-color;
   @include whitney-bold();
   letter-spacing: 0.2px;

@@ -10,6 +10,7 @@
     "lodash": "^4.17.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-modal": "^1.6.5",
     "react-router": "^4.0.0-alpha.3",
     "spinkit": "^1.2.5"
   },

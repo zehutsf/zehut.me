@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Container from '../components/Container';
 import PageHeader from '../components/PageHeader';
+import PageSection from '../components/PageSection';
 import InfoCard from '../components/InfoCard';
 import InfoCardGrid from '../components/InfoCardGrid';
 import '../styles/pages/Academy.scss';
@@ -26,7 +27,6 @@ class Academy extends Component {
     try {
       const response = await fetch('/api/academy/config');
       const data = await response.json();
-      console.log(data);
       this.setState({ loading: false, loaded: true, data });
     } catch (error) {
       this.setState({ loading: false, error: error });
@@ -81,14 +81,14 @@ class Academy extends Component {
           headline={TITLE}
           text={DESCRIPTION} 
         />
-        <div className="Academy-section">
+        <PageSection alt>
           <Container size="md">
             <InfoCardGrid>
               {this.renderVideoCard()}
               {this.renderBumpersCard()}
             </InfoCardGrid>
           </Container>
-        </div>
+        </PageSection>
       </div>
     );
   }
