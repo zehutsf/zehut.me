@@ -1,38 +1,38 @@
 @import "../fonts";
 @import "../vars";
 
-.EventCard {
+.InfoCard {
   width: 100%;
   background: #fff;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out;
 }
 
-.EventCard-img {
+.InfoCard-img {
   background-size: cover;
   background-position: 50% 50%;
   width: 100%;
   height: 100%;
 }
 
-.EventCard-info {
+.InfoCard-info {
   padding: 20px;
 }
 
-.EventCard-name {
+.InfoCard-title {
   @include whitney-bold();
   color: #000;
   font-size: 18px;
   margin-bottom: 5px;
 }
 
-.EventCard-date {
+.InfoCard-subtitle {
   @include archer-medium();
   color: $grey-color;
   font-size: 18px;
 }
 
-.EventCard-link {
+.InfoCard-link {
   display: block;
   margin-top: 24px;
   color: $highlight-color;
@@ -40,11 +40,11 @@
   letter-spacing: 0.2px;
 }
 
-.EventCard:hover {
+.InfoCard:hover {
   box-shadow: 0px 40px 40px rgba(0, 0, 0, 0.25);
   z-index: 50;
 }
 
-.EventCard:hover .EventCard-link {
+.InfoCard:hover .InfoCard-link {
   color: #000;
 }
