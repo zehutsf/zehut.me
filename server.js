@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import bodyParser from 'body-parser';
 import { query } from './api/db';
 import { getEvents } from './api/eventbrite';
+import { getConfig as getAcademyConfig } from './api/academy';
 import { 
   createMonthlyContribution, 
   createOneTimeContribution 
@@ -18,6 +19,12 @@ app.get('/api/config', (req, rw) => {
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
     STRIPE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
   });
+  return;
+});
+
+app.get('/api/academy/config', async (req, rw) => {
+  const result = await getAcademyConfig();
+  rw.json(result);
 });
 
 app.get('/api/events', async (req, rw) => {
@@ -37,7 +44,9 @@ app.post('/api/contribute', async (req, rw) => {
   }
 
   const { id, email } = token;
-  const contributionMethod = type === 'monthly' ? createMonthlyContribution : createOneTimeContribution;
+  const contributionMethod = type === 'monthly' 
+    ? createMonthlyContribution 
+    : createOneTimeContribution;
   
   let contributionData;
   try {

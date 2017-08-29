@@ -22,6 +22,74 @@
 $navbar-item-height: 40px;
 $navbar-item-height-mobile: 35px;
 
+.Navbar-navItems {
+  @media #{$query-mobile} {
+    display: none;
+  }
+}
+
+.Navbar-navToggle {
+  display: none;
+  @media #{$query-mobile} {
+    display: block;
+  }
+}
+
+.Navbar-modalOverlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.74902);
+  z-index: 1000;
+}
+
+.Navbar-modalContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  padding: 20px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.Navbar-modalClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #808080;
+  @include whitney-bold();
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.Navbar-modalNav .Navbar-navItem {
+  height: auto;
+  display: block;
+  padding: 10px;
+}
+
+.Navbar-modalNav .Navbar-navItem-inner {
+  font-size: 36px;
+  padding: 20px;
+}
+
+.Navbar-modalContent .Navbar-logo {
+  position: absolute;
+  left: 20px;
+  top: 0;
+}
+
+.Navbar-navClose {
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
 .Navbar-navItem {
   height: $navbar-height;
   padding: ($navbar-height - $navbar-item-height) / 2 10px;
@@ -38,6 +106,7 @@ $navbar-item-height-mobile: 35px;
 
 .Navbar-navItem-inner {
   @include whitney-bold();
+  display: inline-block;
   font-size: 18px;
   color: #d3d3d3;
   padding: ($navbar-item-height - 18px) / 2;

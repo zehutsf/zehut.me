@@ -1,0 +1,10 @@
+@import "../vars";
+
+.PageSection {
+  width: 100%;
+  padding: 30px 0px;
+}
+
+.PageSection--alt {
+  background-color: $highlight-color;
+}
