@@ -10,7 +10,7 @@ import '../styles/components/Navbar.scss';
 const NAV_ITEMS = [
   // { title: 'Events', to: '/events' },
   { title: 'About', to: '/about' },
-  { title: 'Live', to: '/academy' },
+  // { title: 'Live', to: '/academy' },
 ];
 
 const CONTRIBUTE_ITEM = { 

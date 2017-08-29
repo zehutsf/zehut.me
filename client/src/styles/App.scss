@@ -19,6 +19,10 @@ p {
   line-height: 1.2;
 }
 
+.PageSection p {
+  margin-bottom: 24px;
+}
+
 h2 {
   @include whitney-black();
   font-size: 18px;
