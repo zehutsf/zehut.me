@@ -5,8 +5,10 @@ import PageSection from '../components/PageSection';
 
 import '../styles/pages/About.scss';
 
-const TITLE = 'Judaism 2.0';
-const DESCRIPTION = 'San Francisco is the place for it';
+const TITLE = 'Zehut';
+const DESCRIPTION = `Zehut was established in San Francisco CA in 2007 as a ` +
+`community for millennial Jewish folk who want to have a  spiritual `+
+`experience that is both authentic and personal.`;
 
 class About extends Component {
   render() {
@@ -15,12 +17,17 @@ class About extends Component {
         <PageHeader 
           headline={TITLE}
           text={DESCRIPTION}
-          image={require('../images/parade.jpg')}
+          image={require('../images/rebeccas_minyan.jpg')}
         />
         <Container size="md">
           <PageSection>
             <p>
-              Awesome stuff goes here.
+              10 years later Zehut has curated events in SF LA NY Paris & Israel 
+              while moving it's headquarters to Venice Beach CA.
+            </p>
+            <p>
+              Led by the dynamic leadership of Peretz and Miryum Mochkin, the 
+              future of Jewish life looks as bright and colorful as it ever has.
             </p>
             <p>
               <a href="mailto:rabbi@zehut.me">Get in touch</a>
