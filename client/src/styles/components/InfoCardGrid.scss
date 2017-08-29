@@ -1,0 +1,26 @@
+@import "../vars";
+@import "../queries";
+
+.InfoCardGrid {
+}
+
+.InfoCardGrid-row {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-left: -1em;
+}
+
+.InfoCardGrid-cell .InfoCard {
+  height: 100%;
+}
+
+.InfoCardGrid-cell {
+  flex: 1;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  @media #{$query-mobile} {
+   flex: 0 0 100%;
+  }
+}

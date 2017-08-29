@@ -32,7 +32,7 @@ class Home extends Component {
       <div className="Home-videoContainer" style={videoContainerStyle}>
         <div className="Home-videoOffset" style={videoOffsetStyle}>
           <video 
-            muted loop autoPlay playsInline
+            preload muted loop autoPlay playsInline
             width={videoSize.width} 
             height={videoSize.height}>
             {VIDEO_SOURCES.map(({ type, src }) => <source key={type} type={type} src={src} />)}
@@ -51,7 +51,7 @@ class Home extends Component {
       <VCContainer>
         <div className="Home-content">
           <div className="Home-logo">Zehut!</div>
-          <BlockText>The Jewish engine in San Francisco</BlockText>
+          <BlockText>A uniquely Jewish experience in Venice</BlockText>
         </div>
       </VCContainer>
     );

@@ -2,6 +2,9 @@
 @import "../vars";
 @import "../queries";
 
+.Contribute-content {
+  padding-bottom: 40px;
+}
 .Contribute-section {
   margin-bottom: 40px;
 }
@@ -60,6 +63,10 @@
   position: relative;
   border: thin solid $highlight-color;
   display: inline-block;
+
+  @media #{$query-mobile} {
+    width: 100%;
+  }
 }
 
 .Contribute-amountInput-input {

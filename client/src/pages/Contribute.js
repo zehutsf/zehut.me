@@ -84,17 +84,24 @@ class Contribute extends Component {
     }
   }
 
-  onSelectOption = (selectedOption) => {
-    this.setState({ selectedOption }, () => {
-      // This clamping should really be built in to the scroll library!
-      const maxScrollTop = document.body.scrollHeight - window.innerHeight;
-      const submitTop = this._submitRef.getBoundingClientRect().top;
-      const targetScroll = Math.min(submitTop, maxScrollTop);
+  animateToAndFocusInput = () => {
+    // This clamping should really be built in to the scroll library!
+    const maxScrollTop = document.body.scrollHeight - window.innerHeight;
+    const submitTop = this._submitRef.getBoundingClientRect().top;
+    const targetScroll = Math.min(submitTop, maxScrollTop);
+    const inputNode = findDOMNode(this._inputRef);
 
-      animatedScrollTo(document.body, targetScroll, 750, () => {
-        findDOMNode(this._inputRef).focus();
-      });
-    });
+    if (Math.abs(document.body.scrollTop - targetScroll) < 10) {
+      // Immediately focus input if already scrolled to bottom
+      inputNode.focus();
+    } else {
+      animatedScrollTo(document.body, targetScroll, 750, () => inputNode.focus());
+    }
+  }
+
+  onSelectOption = (selectedOption) => {
+    this.setState({ selectedOption });
+    setTimeout(this.animateToAndFocusInput, 0);
   }
 
   renderSubmit() {
@@ -180,19 +187,21 @@ class Contribute extends Component {
       <div>
         <PageHeader 
           headline="Contribute" 
-          text="Zehut is funded entirely by its community. Thanks for contributing to SF’s jewish future."
+          text="Zehut is funded entirely by its community. Thanks for contributing to our Jewish future."
         />
         <Container size="md" className={isSubmitting ? 'Contribute--isSubmitting' : ''}>
-          <div className="Contribute-section">
-            <div className="Contribute-message">
-              What kind of contribution would you like to make?
+          <div className="Contribute-content">
+            <div className="Contribute-section">
+              <div className="Contribute-message">
+                What kind of contribution would you like to make?
+              </div>
+              <div className="Contribute-options">
+                {this.renderOption('Monthly', OPTION_TYPE_MONTHLY)}
+                {this.renderOption('One-time', OPTION_TYPE_ONE_TIME)}
+              </div>
             </div>
-            <div className="Contribute-options">
-              {this.renderOption('Monthly', OPTION_TYPE_MONTHLY)}
-              {this.renderOption('One-time', OPTION_TYPE_ONE_TIME)}
-            </div>
+            {this.state.selectedOption && this.renderAmount()}
           </div>
-          {this.state.selectedOption && this.renderAmount()}
         </Container>
         <div className="Contribute-overlay"/>
       </div>
