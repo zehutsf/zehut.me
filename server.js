@@ -17,7 +17,8 @@ app.use(bodyParser.json());
 app.get('/api/config', (req, rw) => {
   rw.json({
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
-    STRIPE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
+    STRIPE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+    MAILCHIMP_URL: process.env.MAILCHIMP_URL,
   });
   return;
 });
