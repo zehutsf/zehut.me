@@ -7,11 +7,15 @@ import VCContainer from './VCContainer';
 
 import '../styles/components/Navbar.scss';
 
-const NAV_ITEMS = [
-  // { title: 'Events', to: '/events' },
-  { title: 'About', to: '/about' },
-  // { title: 'Live', to: '/academy' },
-];
+let NAV_ITEMS = null;
+const _constructNavItems = () => {
+  NAV_ITEMS = [
+    // { title: 'Events', to: '/events' },
+    { title: 'About', to: '/about' },
+    // { title: 'Live', to: '/academy' },
+    { title: 'Connect', key: 'connect', href: getConfig().MAILCHIMP_URL }
+  ];
+};
 
 const CONTRIBUTE_ITEM = { 
   title: 'Contribute', 
@@ -74,7 +78,7 @@ class Navbar extends Component {
             {NAV_ITEMS.map(item => (
               <NavItem {...item} onClick={this.onItemClick}/>
             ))}
-            <NavItem {...CONTRIBUTE_ITEM}/>
+            <NavItem {...CONTRIBUTE_ITEM} onClick={this.onItemClick} />
           </div>
         </VCContainer>
         <div>
@@ -100,7 +104,7 @@ class Navbar extends Component {
         </div>
         <div className="Navbar-navToggle">
           <NavItem href="#" onClick={this.onToggle} title="MENU"/>
-          <NavItem {...CONTRIBUTE_ITEM}/>
+          <NavItem {...CONTRIBUTE_ITEM} onClick={this.onItemClick}/>
         </div>
       </div>
     );
