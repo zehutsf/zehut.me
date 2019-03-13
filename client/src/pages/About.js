@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import BlockText from '../components/BlockText';
-=======
 // import BlockText from '../components/BlockText';
->>>>>>> venice
 import Container from '../components/Container';
 import PageHeader from '../components/PageHeader';
 import PageSection from '../components/PageSection';
