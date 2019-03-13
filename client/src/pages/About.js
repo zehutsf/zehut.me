@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import BlockText from '../components/BlockText';
+=======
+// import BlockText from '../components/BlockText';
+>>>>>>> venice
 import Container from '../components/Container';
 import PageHeader from '../components/PageHeader';
 import PageSection from '../components/PageSection';
@@ -7,9 +11,10 @@ import {getConfig} from '../utils/config';
 
 import '../styles/pages/About.scss';
 
-const TITLE = 'Zehut';
-const DESCRIPTION = `Zehut is a community for millennial Jewish folk who want `+
- `to have a  spiritual experience that is both authentic and personal.`;
+const TITLE = 'The Venice Synagogue';
+const DESCRIPTION = `The mission of The Venice Synagogue is to develop a community for
+millennial Jewish folk who want to have a spiritual experience that is
+both authentic and personal.`;
 
 class About extends Component {
   render() {
@@ -23,12 +28,21 @@ class About extends Component {
         <Container size="md">
           <PageSection>
             <p>
-              Est. 10 years ago in San Francisco, Zehut has curated events in 
-              SF LA NY Paris & Israel while moving it's headquarters to Venice Beach, CA.   
+              The community began in 2011 in San Francisco, and has  curated events
+in NY LA Paris & Israel.
             </p>
             <p>
-              Led by the dynamic leadership of Peretz and Miryum Mochkin, the 
-              future of Jewish life looks as bright and colorful as it ever has. 
+              In 2018 we have begun a building campaign in the epicenter of todays
+creative culture Venice Beach, CA  to establish a long term home for
+our innovative programing.
+            </p>
+            <p>
+              Our vision is to create a space that has the look and feel of the
+surrounding establishments.
+            </p>
+            <p>
+              We welcome you to participate by connecting and contributing
+>>>>>>> venice
             </p>
             <p>
               <a href={getConfig().MAILCHIMP_URL}>

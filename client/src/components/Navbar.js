@@ -8,17 +8,14 @@ import {getConfig} from '../utils/config';
 
 import '../styles/components/Navbar.scss';
 
-
 let NAV_ITEMS = null;
 const _constructNavItems = () => {
-  console.log(getConfig());
   NAV_ITEMS = [
     // { title: 'Events', to: '/events' },
     { title: 'About', to: '/about' },
     // { title: 'Live', to: '/academy' },
     { title: 'Connect', key: 'connect', href: getConfig().MAILCHIMP_URL }
   ];
-  console.log(NAV_ITEMS);
 };
 
 const CONTRIBUTE_ITEM = { 
@@ -85,7 +82,7 @@ class Navbar extends Component {
             {NAV_ITEMS.map((item, index) => (
               <NavItem {...item} index={index} onClick={this.onItemClick}/>
             ))}
-            <NavItem {...CONTRIBUTE_ITEM}/>
+            <NavItem {...CONTRIBUTE_ITEM} onClick={this.onItemClick} />
           </div>
         </VCContainer>
         <div>
@@ -111,7 +108,7 @@ class Navbar extends Component {
         </div>
         <div className="Navbar-navToggle">
           <NavItem href="#" onClick={this.onToggle} title="MENU"/>
-          <NavItem {...CONTRIBUTE_ITEM}/>
+          <NavItem {...CONTRIBUTE_ITEM} onClick={this.onItemClick}/>
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Match } from 'react-router';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 // import Events from './pages/Events';
 import Contribute from './pages/Contribute';
 // import Academy from './pages/Academy';
@@ -16,9 +16,9 @@ class App extends Component {
         {({ location }) => (
           <div className="App-container">
             {/* hack while activeClassName is broken */}
-            <Navbar home={location.pathname === '/'}/>
+            <Navbar home={true}/> {/* home means don't show logo */}
             <div className="App-content">
-              <Match exactly pattern="/" component={Home} />
+              <Match exactly pattern="/" component={About} />
               <Match pattern="/about" component={About} />
               {/*<Match pattern="/events" component={Events} />*/}
               <Match pattern="/contribute" component={Contribute} />

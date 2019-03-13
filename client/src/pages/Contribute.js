@@ -187,7 +187,8 @@ class Contribute extends Component {
       <div>
         <PageHeader 
           headline="Contribute" 
-          text="Zehut is funded entirely by its community. Thanks for contributing to our Jewish future."
+          text="The Venice Synagogue is funded entirely by its community. Thanks for
+contributing to our Jewish future."
         />
         <Container size="md" className={isSubmitting ? 'Contribute--isSubmitting' : ''}>
           <div className="Contribute-content">
