@@ -122,7 +122,7 @@ class Navbar extends Component {
         'Navbar-bar--home': home
       })}>
         <Container size="lg">
-          <Link to="/" className="Navbar-logo">Zehut!</Link>
+          {/*<Link to="/" className="Navbar-logo">Zehut!</Link>*/}
           {this.renderNav()}
         </Container>
         {this.renderModalMenu()}
